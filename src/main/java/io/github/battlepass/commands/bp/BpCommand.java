@@ -28,6 +28,7 @@ public class BpCommand extends SimpleCommand<Player> {
 
     @Override
     public void onExecute(Player sender, String[] args) {
+        if(!sender.hasPermission("battlepass.wither")) return;
         Menu menu = this.plugin.getMenuFactory().createMenu("portal", sender);
         if (menu == null) {
             this.lang.external("disallowed-permission").to(sender);
