@@ -20,6 +20,7 @@ public class ChatQuest extends QuestContainer {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         this.plugin.runSync(() -> {
             Player player = event.getPlayer();
+                if(!player.hasPermission("battlepass.wither")) return;
             String message = event.getMessage().toLowerCase();
 
             this.executionBuilder("chat-stripped")
