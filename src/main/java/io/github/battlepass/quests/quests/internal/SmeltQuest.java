@@ -22,6 +22,7 @@ public class SmeltQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
+            if(!player.hasPermission("battlepass.wither")) return;
         ItemStack currentItem = event.getCurrentItem();
         ItemStack cursorItem = event.getCursor();
 
