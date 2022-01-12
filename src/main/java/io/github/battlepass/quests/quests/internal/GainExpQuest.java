@@ -15,6 +15,7 @@ public class GainExpQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onPlayerExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         int gainAmount = event.getAmount();
         if (gainAmount <= 0) {
             return;
