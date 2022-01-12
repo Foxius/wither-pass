@@ -17,6 +17,7 @@ public class ShearSheepQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onShear(PlayerShearEntityEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         Entity entity = event.getEntity();
         String entityName = event.getEntity().getCustomName();
         if (!(entity instanceof Sheep)) {
