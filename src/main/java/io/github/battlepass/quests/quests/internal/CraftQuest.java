@@ -21,6 +21,7 @@ public class CraftQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onCraftItem(CraftItemEvent event) {
         Player player = (Player) event.getWhoClicked();
+            if(!player.hasPermission("battlepass.wither")) return;
         ItemStack itemStack = event.getCurrentItem();
 
         if (itemStack == null) {
