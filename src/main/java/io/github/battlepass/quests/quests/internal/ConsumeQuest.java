@@ -19,6 +19,7 @@ public class ConsumeQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onItemConsume(PlayerItemConsumeEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         ItemStack itemStack = event.getItem();
 
         this.executionBuilder("consume")
