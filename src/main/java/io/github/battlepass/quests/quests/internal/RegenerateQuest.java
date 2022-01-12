@@ -19,6 +19,7 @@ public class RegenerateQuest extends QuestContainer {
         }
 
         Player player = (Player) event.getEntity();
+            if(!player.hasPermission("battlepass.wither")) return;
         EntityRegainHealthEvent.RegainReason regainReason = event.getRegainReason();
         int gainAmount = (int) Math.round(event.getAmount());
 
