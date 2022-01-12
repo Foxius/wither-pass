@@ -21,6 +21,7 @@ public class FishingQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onFishCaught(PlayerFishEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         Entity entity = event.getCaught();
         PlayerFishEvent.State state = event.getState();
 
