@@ -19,6 +19,7 @@ public class TameQuest extends QuestContainer {
             return;
         }
         Player player = (Player) event.getOwner();
+            if(!player.hasPermission("battlepass.wither")) return;
         Entity entity = event.getEntity();
         String entityName = event.getEntity().getCustomName();
 
