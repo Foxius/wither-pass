@@ -20,6 +20,8 @@ public class ProjectileQuest extends QuestContainer {
         EntityType entityType = event.getEntityType();
 
         if (source instanceof Player) {
+            Player player = (Player) source;
+                if(!player.hasPermission("battlepass.wither")) return;
             this.executionBuilder("throw-projectile")
                     .player((Player) source)
                     .root(entityType.toString())
