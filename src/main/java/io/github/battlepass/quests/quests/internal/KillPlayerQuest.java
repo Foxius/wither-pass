@@ -18,7 +18,9 @@ public class KillPlayerQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onDamage(PlayerDeathEvent event) {
         Player killer = event.getEntity().getKiller();
+            if(!player.hasPermission("battlepass.wither")) return;
         Player victim = event.getEntity();
+            if(!player.hasPermission("battlepass.wither")) return;
 
         if (Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
             NPCRegistry npcRegistry = CitizensAPI.getNPCRegistry();
