@@ -13,6 +13,8 @@ public class PlayTimeQuest extends QuestContainer {
     }
 
     public void run(BattlePlugin plugin) {
+        Player player = (Player) source;
+            if(!player.hasPermission("battlepass.wither")) return;
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 this.executionBuilder("playtime")
