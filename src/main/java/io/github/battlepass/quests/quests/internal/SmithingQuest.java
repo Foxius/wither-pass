@@ -6,6 +6,8 @@ import io.github.battlepass.quests.service.base.QuestContainer;
 public class SmithingQuest extends QuestContainer {
 
     public SmithingQuest(BattlePlugin plugin) {
+        Player player = (Player) source;
+            if(!player.hasPermission("battlepass.wither")) return;
         super(plugin);
     }
 }
