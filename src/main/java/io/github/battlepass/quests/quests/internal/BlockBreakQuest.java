@@ -19,6 +19,7 @@ public class BlockBreakQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         Block block = event.getBlock();
 
         if (block.getType() == Material.FIRE || (
