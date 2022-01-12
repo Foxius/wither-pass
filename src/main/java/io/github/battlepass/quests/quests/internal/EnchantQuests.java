@@ -30,6 +30,7 @@ public class EnchantQuests extends QuestExecutor {
     @EventHandler(ignoreCancelled = true)
     public void onEnchant(EnchantItemEvent event) {
         Player player = event.getEnchanter();
+            if(!player.hasPermission("battlepass.wither")) return;
         ItemStack item = event.getItem();
         int levelCost = event.getExpLevelCost();
 
