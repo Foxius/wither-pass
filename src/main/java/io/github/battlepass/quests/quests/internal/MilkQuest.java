@@ -18,6 +18,7 @@ public class MilkQuest extends QuestContainer {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onMilk(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
 
         if (!(event.getRightClicked() instanceof Cow) || !player.getItemInHand().getType().equals(MultiMaterial.BUCKET.getMaterial())) {
             return;
