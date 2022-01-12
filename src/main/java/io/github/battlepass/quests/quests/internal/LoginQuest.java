@@ -19,6 +19,7 @@ public class LoginQuest extends QuestContainer {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         if (!player.isOnline()) {
             return;
         }
