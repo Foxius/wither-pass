@@ -15,6 +15,7 @@ public class ExecuteCommandQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         String command = event.getMessage();
 
         this.executionBuilder("execute-command")
