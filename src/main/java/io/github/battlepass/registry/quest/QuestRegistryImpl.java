@@ -3,43 +3,6 @@ package io.github.battlepass.registry.quest;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import io.github.battlepass.BattlePlugin;
-import io.github.battlepass.quests.quests.external.ASkyblockQuests;
-import io.github.battlepass.quests.quests.external.AdvancedEnchantmentsQuests;
-import io.github.battlepass.quests.quests.external.AuctionHouseKludgeQuests;
-import io.github.battlepass.quests.quests.external.AutoSellQuests;
-import io.github.battlepass.quests.quests.external.BedWars1058Quests;
-import io.github.battlepass.quests.quests.external.BenzimmerKothQuests;
-import io.github.battlepass.quests.quests.external.BuildBattleTigerQuests;
-import io.github.battlepass.quests.quests.external.ChatReactionQuests;
-import io.github.battlepass.quests.quests.external.CitizensQuests;
-import io.github.battlepass.quests.quests.external.ClansQuests;
-import io.github.battlepass.quests.quests.external.ClueScrollsQuests;
-import io.github.battlepass.quests.quests.external.CrateReloadedQuests;
-import io.github.battlepass.quests.quests.external.CratesPlusQuests;
-import io.github.battlepass.quests.quests.external.CrazyCratesQuests;
-import io.github.battlepass.quests.quests.external.CrazyEnvoyQuests;
-import io.github.battlepass.quests.quests.external.DiscordMinecraftQuests;
-import io.github.battlepass.quests.quests.external.JobsQuests;
-import io.github.battlepass.quests.quests.external.LandsQuests;
-import io.github.battlepass.quests.quests.external.LobbyPresentsPoompkQuests;
-import io.github.battlepass.quests.quests.external.MoneyHuntersQuests;
-import io.github.battlepass.quests.quests.external.MythicMobsQuests;
-import io.github.battlepass.quests.quests.external.PlaceholderApiQuests;
-import io.github.battlepass.quests.quests.external.PlotSquaredQuests;
-import io.github.battlepass.quests.quests.external.ProCosmeticsQuests;
-import io.github.battlepass.quests.quests.external.ShopGuiPlusQuests;
-import io.github.battlepass.quests.quests.external.ShopkeepersQuests;
-import io.github.battlepass.quests.quests.external.SkillApiQuests;
-import io.github.battlepass.quests.quests.external.StrikePracticeQuests;
-import io.github.battlepass.quests.quests.external.SubsideKothQuests;
-import io.github.battlepass.quests.quests.external.SuperiorSkyblockQuests;
-import io.github.battlepass.quests.quests.external.TheLabQuests;
-import io.github.battlepass.quests.quests.external.TokenEnchantQuests;
-import io.github.battlepass.quests.quests.external.USkyBlockQuests;
-import io.github.battlepass.quests.quests.external.UltraSkyWarsQuests;
-import io.github.battlepass.quests.quests.external.VotifierQuests;
-import io.github.battlepass.quests.quests.external.chestshop.ChestShopQuests;
-import io.github.battlepass.quests.quests.external.chestshop.LegacyChestShopQuests;
 import io.github.battlepass.quests.quests.internal.BlockBreakQuest;
 import io.github.battlepass.quests.quests.internal.BlockPlaceQuest;
 import io.github.battlepass.quests.quests.internal.ChatQuest;
@@ -64,7 +27,6 @@ import io.github.battlepass.quests.quests.internal.RideMobQuest;
 import io.github.battlepass.quests.quests.internal.ShearSheepQuest;
 import io.github.battlepass.quests.quests.internal.SmeltQuest;
 import io.github.battlepass.quests.quests.internal.TameQuest;
-import io.github.battlepass.quests.service.base.ExternalQuestContainer;
 import io.github.battlepass.quests.service.base.QuestContainer;
 import io.github.battlepass.registry.quest.object.PluginVersion;
 import me.hyfe.simplespigot.tuple.ImmutablePair;
@@ -92,78 +54,6 @@ public class QuestRegistryImpl implements QuestRegistry {
 
         this.disabledHooks = plugin.getConfig("settings").stringList("disabled-plugin-hooks");
     }
-
-    @Override
-    public void register() {
-        this.quest(
-                BlockBreakQuest::new,
-                BlockPlaceQuest::new,
-                ChatQuest::new,
-                ClickQuest::new,
-                ConsumeQuest::new,
-                CraftQuest::new,
-                DamageQuest::new,
-                EnchantQuests::new,
-                ExecuteCommandQuest::new,
-                FishingQuest::new,
-                GainExpQuest::new,
-                ItemBreakQuest::new,
-                KillMobQuest::new,
-                KillPlayerQuest::new,
-                LoginQuest::new,
-                MilkQuest::new,
-                MovementQuests::new,
-                ProjectileQuest::new,
-                RegenerateQuest::new,
-                RideMobQuest::new,
-                ShearSheepQuest::new,
-                SmeltQuest::new,
-                TameQuest::new
-        );
-        if (this.plugin.getConfig("settings").bool("enable-play-time")) {
-            new PlayTimeQuest(this.plugin);
-        }
-        this.hook("AdvancedEnchantments", AdvancedEnchantmentsQuests::new);
-        this.hook("ASkyblock", ASkyblockQuests::new);
-        this.hook("AuctionHouse", AuctionHouseKludgeQuests::new, "klugemonkey");
-        this.hook("AutoSell", AutoSellQuests::new, "extended_clip");
-        this.hook("BedWars1058", BedWars1058Quests::new);
-        this.hook("KOTH", BenzimmerKothQuests::new, "benzimmer123");
-        this.hook("BuildBattle", BuildBattleTigerQuests::new, "Tigerpanzer");
-        this.hook("ChatReaction", ChatReactionQuests::new);
-        this.hook("ChestShop", ChestShopQuests::new, "https://github.com/ChestShop-authors/ChestShop-3/contributors", version ->
-                version.getMajor() >= 3 && version.getMinor() > 9);
-        this.hook("ChestShop", LegacyChestShopQuests::new, "https://github.com/ChestShop-authors/ChestShop-3/contributors", version ->
-                version.getMajor() == 3 && version.getMinor() <= 9);
-        this.hook("Citizens", CitizensQuests::new);
-        this.hook("Clans", ClansQuests::new);
-        this.hook("ClueScrolls", ClueScrollsQuests::new);
-        this.hook("CrateReloaded", CrateReloadedQuests::new);
-        this.hook("CratesPlus", CratesPlusQuests::new);
-        this.hook("CrazyCrates", CrazyCratesQuests::new);
-        this.hook("DiscordMinecraft", DiscordMinecraftQuests::new);
-        this.hook("Jobs", JobsQuests::new);
-        this.hook("Lands", LandsQuests::new);
-        this.hook("LobbyPresents", LobbyPresentsPoompkQuests::new, "poompk");
-        this.hook("KoTH", SubsideKothQuests::new, "SubSide");
-        this.hook("MoneyHunters", MoneyHuntersQuests::new);
-        this.hook("MythicMobs", MythicMobsQuests::new);
-        this.hook("PlotSquared", PlotSquaredQuests::new);
-        this.hook("ProCosmetics", ProCosmeticsQuests::new);
-        this.hook("ShopGuiPlus", ShopGuiPlusQuests::new);
-        this.hook("CrazyEnvoy", CrazyEnvoyQuests::new);
-        this.hook("Shopkeepers", ShopkeepersQuests::new, "nisovin");
-        this.hook("SkillAPI", SkillApiQuests::new);
-        this.hook("StrikePractice", StrikePracticeQuests::new);
-        this.hook("SuperiorSkyblock2", SuperiorSkyblockQuests::new);
-        this.hook("TheLab", TheLabQuests::new);
-        this.hook("TokenEnchant", TokenEnchantQuests::new);
-        this.hook("UltraSkyWars", UltraSkyWarsQuests::new, "Leonardo0013YT");
-        this.hook("uSkyBlock", USkyBlockQuests::new);
-        this.hook("Votifier", VotifierQuests::new);
-        this.placeholderAPI(this.plugin.getQuestCache().getPlaceholderTypes());
-    }
-
     @Override
     public Set<String> getRegisteredHooks() {
         return this.registeredHooks;
