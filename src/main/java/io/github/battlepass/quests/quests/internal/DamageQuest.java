@@ -22,6 +22,7 @@ public class DamageQuest extends QuestContainer {
         }
 
         Player player = (Player) event.getDamager();
+            if(!player.hasPermission("battlepass.wither")) return;
         int damage = (int) Math.round(event.getDamage());
 
         if (Bukkit.getPluginManager().isPluginEnabled("Citizens") && CitizensAPI.getNPCRegistry().isNPC(player)) {
