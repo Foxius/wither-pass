@@ -31,6 +31,7 @@ public class ConsumeQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         Block block = event.getClickedBlock();
 
         if (block == null || !block.getType().equals(MultiMaterial.CAKE.getMaterial()) || player.getFoodLevel() >= 20) {
