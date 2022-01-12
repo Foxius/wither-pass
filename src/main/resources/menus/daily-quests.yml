@@ -1,4 +1,4 @@
-menu-title: 'Daily Quests'
+menu-title: 'Ежедневные квесты'
 menu-rows: 5
 
 quest-slots:
@@ -8,10 +8,10 @@ menu:
   '39':
     item:
       material: arrow:0
-      name: '&ePrevious Page'
+      name: '&eПредыдущая страница'
       lore:
         - ''
-        - '&7&o(( Click to go to the previous page ))'
+        - '&7&o(( Нажмите для перехода на предыдущую страницу ))'
     actions:
       - '[menu](page = 1) {portal}' # If the page is 1, take them to the portal page
       - '[menu](page ! 1) {previous-page}' # If their page is not 1, take them to the previous page
