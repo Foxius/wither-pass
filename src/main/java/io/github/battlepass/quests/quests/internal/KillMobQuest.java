@@ -20,6 +20,7 @@ public class KillMobQuest extends QuestContainer {
     public void onEntityKill(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
         Player player = entity.getKiller();
+            if(!player.hasPermission("battlepass.wither")) return;
         if (entity instanceof Player) {
             return;
         }
