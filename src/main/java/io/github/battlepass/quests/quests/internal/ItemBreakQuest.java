@@ -16,6 +16,7 @@ public class ItemBreakQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onItemBreak(PlayerItemBreakEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         ItemStack brokenItem = event.getBrokenItem();
 
         this.executionBuilder("item-break")
