@@ -18,6 +18,7 @@ public class ClickQuest extends QuestContainer {
     @EventHandler(ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+            if(!player.hasPermission("battlepass.wither")) return;
         Block clickedBlock = event.getClickedBlock();
         QuestExecutionBuilder executionBuilder;
         switch (event.getAction()) {
